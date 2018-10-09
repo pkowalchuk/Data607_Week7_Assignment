@@ -132,22 +132,26 @@ $(document).ready(function () {
 <h2>HTML</h2>
 <pre class="r"><code>library(rvest)
 library(dplyr)</code></pre>
-<pre class="r"><code>htmlBooks&lt;-tbl_df(as.data.frame(read_html(&quot;books.html&quot;) %&gt;% html_table(header = NA, trim=TRUE, fill=TRUE)))
+<pre class="r"><code>htmlFile&lt;-&quot;https://raw.githubusercontent.com/pkowalchuk/Data607_Week7_Assignment/master/books.html&quot;
+htmlBooks&lt;-tbl_df(as.data.frame(read_html(htmlFile) %&gt;% html_table(header = NA, trim=TRUE, fill=TRUE)))
 #htmlBooks %&gt;% kable() %&gt;% kable_styling() %&gt;% scroll_box(width = &quot;910px&quot;)</code></pre>
 </div>
 <div id="xml" class="section level2">
 <h2>XML</h2>
-<pre class="r"><code>library(XML)</code></pre>
-<pre class="r"><code>xmlBooks&lt;-tbl_df(xmlToDataFrame(&quot;books.xml&quot;))
+<pre class="r"><code>library(XML)
+library(RCurl)</code></pre>
+<pre class="r"><code>xmlfile&lt;-getURL(&quot;https://raw.githubusercontent.com/pkowalchuk/Data607_Week7_Assignment/master/books.xml&quot;)
+xmlBooks&lt;-tbl_df(xmlToDataFrame(xmlfile))
 #xmlBooks %&gt;% kable() %&gt;% kable_styling() %&gt;% scroll_box(width = &quot;910px&quot;)</code></pre>
 </div>
 <div id="json" class="section level2">
 <h2>JSON</h2>
 <pre class="r"><code>library(RJSONIO)
 library(jsonlite)</code></pre>
-<pre class="r"><code>isValidJSON(&quot;books.json&quot;)</code></pre>
+<pre class="r"><code>jsonFile&lt;-&quot;https://raw.githubusercontent.com/pkowalchuk/Data607_Week7_Assignment/master/books.json&quot;
+isValidJSON(jsonFile)</code></pre>
 <pre><code>## [1] TRUE</code></pre>
-<pre class="r"><code>jsonbooks&lt;-tbl_df(as.data.frame(fromJSON(&quot;books.json&quot;)))
+<pre class="r"><code>jsonbooks&lt;-tbl_df(as.data.frame(fromJSON(jsonFile)))
 #jsonbooks %&gt;% kable() %&gt;% kable_styling() %&gt;% scroll_box(width = &quot;910px&quot;)</code></pre>
 </div>
 <div id="are-the-three-data-frames-identical" class="section level2">
@@ -178,11 +182,11 @@ jsonbooks$Pages&lt;-as.integer(jsonbooks$Pages)
 <p>Withe these operations we have all three data frames with similar structures</p>
 <pre class="r"><code>htmlBooks</code></pre>
 <pre><code>## # A tibble: 3 x 5
-##   Tittle                              Authors Genres  NumberOf~ Available~
-##   &lt;chr&gt;                               &lt;list&gt;  &lt;list&gt;      &lt;int&gt; &lt;chr&gt;     
-## 1 Algorithms to Live By: The Compute~ &lt;chr [~ &lt;chr [~       368 Yes       
-## 2 String Theory                       &lt;chr [~ &lt;chr [~       138 No        
-## 3 War and Peace                       &lt;chr [~ &lt;chr [~      1225 Yes</code></pre>
+##   Tittle                                 Authors Genres  Pages AvailableI~
+##   &lt;chr&gt;                                  &lt;list&gt;  &lt;list&gt;  &lt;int&gt; &lt;chr&gt;      
+## 1 Algorithms to Live By: The Computer S~ &lt;chr [~ &lt;chr [~   368 Yes        
+## 2 String Theory                          &lt;chr [~ &lt;chr [~   138 No         
+## 3 War and Peace                          &lt;chr [~ &lt;chr [~  1225 Yes</code></pre>
 <pre class="r"><code>xmlBooks</code></pre>
 <pre><code>## # A tibble: 3 x 5
 ##   Title                                  Authors Genres  Pages AvailableI~
