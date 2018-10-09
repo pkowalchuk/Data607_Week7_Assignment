@@ -1,0 +1,39 @@
+{"books":[
+	{
+		"Title":"Algorithms to Live By: The Computer Science of Human Decisions",
+		"Authors":[
+			"Brian Christian",
+			"Tom Griffiths"],
+		"Genres":[
+			"Science",
+			"Computer Science",
+			"Psychology",
+			"Non-fiction",
+			"Technology"],			
+		"Pages":"368",
+		"AvailableInAudio":"Yes"	
+	},
+	{
+		"Title":"String Theory",
+		"Authors":[
+			"David Foster Wallace"],
+		"Genres":[
+			"Writing",
+			"Non-fiction",
+			"Essays",
+			"Science",
+			"Sports",
+			"Sports and Games"],
+		"Pages":"138",
+		"AvailableInAudio":"No"
+	},
+	{
+		"Title":"War and Peace",
+		"Authors":[
+			"Leo Tolstoy"],
+		"Genres":[
+			"Novel"],
+		"Pages":"1225",
+		"AvailableInAudio":"Yes"
+	}]
+}
